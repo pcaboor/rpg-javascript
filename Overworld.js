@@ -5,7 +5,7 @@ class Overworld {
         this.ctx = this.canvas.getContext("2d");
     }
 
-    starGameLoop() {
+    startGameLoop() {
         const step = () => {
 
             // --- Clear Canvas ---
@@ -18,7 +18,9 @@ class Overworld {
             // --- Draw Object ---
 
             Object.values(this.map.gameObjects).forEach(object => {
-                object.x += 0.5;
+                object.update({
+                    arrow: this.directionInput.direction
+                })
                 object.sprite.draw(this.ctx);
             })
 
@@ -37,9 +39,12 @@ class Overworld {
 
         this.map = new OverworldMap(window.OverworldMap.DemoRoom); // <--- Commencer par cette map "Demo Room"
 
+        this.directionInput = new DirectionInput();
+        this.directionInput.init();
+
         // --- Start Game Loop ----
 
-        this.starGameLoop();
+        this.startGameLoop();
 
 
     }

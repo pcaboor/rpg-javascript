@@ -26,15 +26,16 @@ window.OverworldMap = {
         lowerSrc: "/images/maps/DemoLower.png",
         upperSrc: "/images/maps/DemoUpper.png",
         gameObjects: {
-            player: new GameObject({
-                x: 5,
-                y: 6
+            hero: new Person({
+                isPlayerControlled: true,
+                x: utils.withGrid(5),
+                y: utils.withGrid(6),
             }),
-            npc1: new GameObject({
-                x: 7,
-                y: 9,
-                src: "/images/enemies/Skeleton.png"
-            })
+            // npc1: new Person({
+            //     x: utils.withGrid(7),
+            //     y: utils.withGrid(9),
+            //     src: "/images/enemies/Skeleton.png"
+            // })
         }
     },
     Kitchen: {
@@ -44,11 +45,12 @@ window.OverworldMap = {
             player: new GameObject({
                 x: 3,
                 y: 1
+
             }),
             npcA: new GameObject({
                 x: 9,
                 y: 2,
-                src: "/images/enemies/Skeleton.png"
+                src: "/images/characters/people/hero.png"
             }),
             npcB: new GameObject({
                 x: 9,
