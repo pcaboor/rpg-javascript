@@ -1,15 +1,19 @@
+// Sprite : All elements like player / PNJ / Props 
+
 class Sprite {
     constructor(config) {
 
-        // Setup up image
+        // --- Setup up image ---
+
+        /* Charger le joueur */
 
         this.image = new Image();
         this.image.src = config.src;
         this.image.onload = () => {
-            this.isLoaded = true;
+            this.isLoaded = true; // <--- Image du player ready pour le world
         }
 
-        // -- Shadow preset ---
+        // --- Shadow preset ---
 
         this.shadow = new Image();
         this.useShadow = true;
