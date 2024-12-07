@@ -23,7 +23,6 @@ class DirectionInput {
             const dir = this.map[e.code];
             if (dir && this.helpDirections.indexOf(dir) === -1) {
                 this.helpDirections.unshift(dir);
-                console.log(this.helpDirections)
             }
         });
         document.addEventListener("keyup", e => {
@@ -31,7 +30,6 @@ class DirectionInput {
             const index = this.helpDirections.indexOf(dir);
             if (index > -1) {
                 this.helpDirections.splice(index, 1);
-                console.log(this.helpDirections)
             }
         })
 

@@ -50,8 +50,9 @@ class Sprite {
     }
 
     get frame() {
-        return this.animations[this.currentAnimation][this.currentAnimationFrame];
+        return this.animations[this.currentAnimation][this.currentAnimationFrame]
     }
+
     setAnimation(key) {
         if (this.currentAnimation !== key) {
             this.currentAnimation = key;
@@ -77,12 +78,12 @@ class Sprite {
 
 
     }
+    draw(ctx, cameraPerson) {
+        const x = this.gameObject.x - 8 + utils.withGrid(10.5) - cameraPerson.x;
+        const y = this.gameObject.y - 18 + utils.withGrid(6) - cameraPerson.y;
 
-    draw(ctx) {
-        const x = this.gameObject.x - 8;
-        const y = this.gameObject.y - 18;
+        this.isShadowLoaded && ctx.drawImage(this.shadow, x, y);
 
-        // this.isLoadedShadow && ctx.drawImage(this.shadow, x, y); <------- Show shadow on screen
 
         const [frameX, frameY] = this.frame;
 
@@ -92,6 +93,8 @@ class Sprite {
             x, y,
             32, 32
         )
+
         this.updateAnimationProgress();
     }
+
 }
