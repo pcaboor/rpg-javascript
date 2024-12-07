@@ -32,7 +32,9 @@ class Overworld {
 
             // --- Draw Object ---
 
-            Object.values(this.map.gameObjects).forEach(object => {
+            Object.values(this.map.gameObjects).sort((a, b) => {
+                return a.y - b.y; // <--- Sort par position y croissante
+            }).forEach(object => {
                 object.sprite.draw(this.ctx, cameraPlayer);
             })
 
@@ -49,7 +51,7 @@ class Overworld {
 
     init() {
 
-        this.map = new OverworldMap(window.OverworldMap.Dungeon); // <--- Commencer par cette map "Demo Room"
+        this.map = new OverworldMap(window.OverworldMap.DemoRoom); // <--- Commencer par cette map "Demo Room"
         this.map.mountObjects();
 
         this.directionInput = new DirectionInput();
@@ -58,5 +60,12 @@ class Overworld {
         // --- Start Game Loop ----
 
         this.startGameLoop();
+
+        this.map.startCutscene([
+            { type: "move", direction: "up", who: "hero", time: 500 },
+            { type: "move", direction: "right", who: "hero", time: 500 },
+            { type: "move", direction: "down", who: "hero", time: 500 },
+            { type: "move", direction: "left", who: "hero", time: 500 },
+        ]);
     }
 }
