@@ -35,7 +35,8 @@ class Overworld {
       //Draw Upper layer
       this.map.drawUpperImage(this.ctx, cameraPerson);
 
-      this.minimap.update();
+      const hero = this.map.gameObjects.hero;
+      this.minimap.update(this.map, hero);
 
       requestAnimationFrame(() => {
         step();
@@ -71,15 +72,11 @@ class Overworld {
 
     // Créer la minimap
     this.minimap = new MiniMap({
-      map: this.map,
-      width: 400,
-      height: 400,
       scale: 1
     });
 
     // Monter la minimap
     this.minimap.mount(document.body);
-
     // Mettre à jour la minimap lors des changements de map
     this.minimap.update(this.map);
 
@@ -93,7 +90,8 @@ class Overworld {
     this.startGameLoop();
 
     this.map.startCutscene([
-      { type: "changeMap", map: "DemoRoom" }
+      { type: "battle" }
+      // { type: "changeMap", map: "DemoRoom" }
     ])
 
 

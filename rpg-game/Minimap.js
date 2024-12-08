@@ -1,46 +1,65 @@
 class MiniMap {
     constructor(config) {
-        // Élément canvas pour la minimap
-        this.canvas = document.createElement('canvas');
-        this.canvas.width = config.width || 200;
-        this.canvas.height = config.height || 200;
-        this.canvas.style.position = 'absolute';
-        this.canvas.style.top = '14px';
-        this.canvas.style.right = '14px';
-        this.canvas.style.zIndex = '100';
-        this.canvas.style.border = '2px solid black';
+        // Créer un conteneur pour la minimap
+        this.container = document.createElement('div');
+        this.container.style.position = 'absolute';
+        this.container.style.bottom = '20px';
+        this.container.style.right = '20px';
+        this.container.style.width = '400px';
+        this.container.style.height = '850px';
 
-        this.canvas.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        this.container.style.overflow = 'hidden';
+        this.container.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
+
+        // Canvas principal
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = 400;  // Plus grand que le conteneur pour permettre le déplacement
+        this.canvas.height = 400;
+        this.canvas.style.position = 'absolute';
+
+
+        // Masque circulaire
+        this.mask = document.createElement('div');
+        this.mask.style.position = 'absolute';
+        this.mask.style.width = '200px';
+        this.mask.style.height = '200px';
+
+
+        this.mask.style.pointerEvents = 'none';
 
         // Contexte de dessin
         this.ctx = this.canvas.getContext('2d');
 
-        // Référence à la carte du monde
-        this.map = config.map;
-
-        // Facteur de réduction pour la minimap
+        // Paramètres de configuration
+        this.map = null;
         this.scale = config.scale || 0.2;
+        this.radius = 100;  // Rayon de la minimap
     }
 
-    // Méthode pour ajouter la minimap au DOM
     mount(parentElement) {
-        parentElement.appendChild(this.canvas);
+        this.container.appendChild(this.canvas);
+        this.container.appendChild(this.mask);
+        parentElement.appendChild(this.container);
     }
 
-    // Dessiner la minimap
-    draw() {
-        // Effacer le canvas
+    // Méthode pour centrer la minimap sur le héros
+    centerOnHero(hero) {
+        const heroX = hero.x * this.scale;
+        const heroY = hero.y * this.scale;
+
+        // Calculer le décalage pour centrer le héros
+        const offsetX = this.radius - heroX;
+        const offsetY = this.radius - heroY;
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // Vérifier si une map existe
-        if (!this.map) return;
-
-        // Dessiner le fond de la map
+        // Dessiner le fond de la map avec le décalage
         if (this.map.lowerImage) {
             this.ctx.globalAlpha = 0.5;
             this.ctx.drawImage(
                 this.map.lowerImage,
-                0, 0,
+                offsetX,
+                offsetY,
                 this.map.lowerImage.width * this.scale,
                 this.map.lowerImage.height * this.scale
             );
@@ -48,16 +67,16 @@ class MiniMap {
         }
 
         // Dessiner les objets du jeu
-        this.drawGameObjects();
+        this.drawGameObjects(offsetX, offsetY);
     }
 
     // Dessiner les objets du jeu sur la minimap
-    drawGameObjects() {
+    drawGameObjects(offsetX, offsetY) {
         const objects = this.map.gameObjects;
 
         Object.values(objects).forEach(object => {
-            const x = object.x * this.scale;
-            const y = object.y * this.scale;
+            const x = object.x * this.scale + offsetX;
+            const y = object.y * this.scale + offsetY;
 
             // Couleur différente pour le héros
             this.ctx.fillStyle = object.isPlayerControlled ? 'red' : 'blue';
@@ -70,7 +89,13 @@ class MiniMap {
     }
 
     // Mettre à jour la minimap
-    update() {
-        this.draw();
+    update(newMap, hero) {
+        if (newMap && newMap !== this.map) {
+            this.map = newMap;
+        }
+
+        if (hero) {
+            this.centerOnHero(hero);
+        }
     }
 }
