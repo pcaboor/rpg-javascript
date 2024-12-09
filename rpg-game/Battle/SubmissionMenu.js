@@ -1,7 +1,8 @@
 class SubmissionMenu {
-    constructor({ caster, enemy, onComplete, items }) {
+    constructor({ caster, enemy, onComplete, items, replacements }) {
         this.caster = caster;
         this.enemy = enemy;
+        this.replacements = replacements;
         this.onComplete = onComplete;
 
         let quantityMap = {};
@@ -54,7 +55,7 @@ class SubmissionMenu {
                     label: "Swap",
                     description: "Change to another combatant",
                     handler: () => {
-                        this.keyboardMenu.setOptions(this.getPages().attacks);
+                        this.keyboardMenu.setOptions(this.getPages().replacements);
                     }
                 },
             ],
@@ -86,8 +87,27 @@ class SubmissionMenu {
                     }
                 }),
                 backOption
+            ], replacements: [
+                ...this.replacements.map(replacement => {
+                    return {
+                        label: replacement.name,
+                        description: replacement.description,
+                        handler: () => {
+                            this.menuSubmitReplacement(replacement)
+                        }
+                    }
+                }),
+                backOption
             ]
         }
+    }
+
+    menuSubmitReplacement(replacement) {
+        this.keyboardMenu?.end();
+        this.onComplete({
+            replacement
+        })
+
     }
 
     menuSubmit(action, instanceId = null) {
@@ -101,10 +121,25 @@ class SubmissionMenu {
         })
     }
 
+    // --- Que va faire l'ia ---
     decide() {
-        this.menuSubmit(Actions[this.caster.actions[0]],)
-    }
+        // const aiDecision = new AIDecision(this.caster, this.enemy);
 
+        // console.log(aiDecision)
+
+        // const chosenAction = aiDecision.decideAction();
+
+        // console.log(chosenAction)
+
+        // if (chosenAction) {
+        //     this.menuSubmit(chosenAction);
+        // } else {
+        //     // Fallback to the first action if something goes wrong
+        //   
+        // }
+        this.menuSubmit(Actions[this.caster.actions[0]]);
+
+    }
     showMenu(container) {
         this.keyboardMenu = new keyboardMenu();
         this.keyboardMenu.init(container);

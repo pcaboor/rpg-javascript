@@ -1,4 +1,7 @@
 window.Actions = {
+
+    // -- Attack effects ---
+
     damage1: {
         name: "Whomp!",
         success: [
@@ -8,7 +11,26 @@ window.Actions = {
         ]
     },
 
-    // Heal effects
+    creamy: {
+        name: "La creme de Gab",
+        success: [
+            { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
+            { type: "animation", animation: "glob" },
+            { type: "stateChange", damage: 30 }
+        ]
+    },
+
+    finishHim: {
+        name: "Finish him!",
+        success: [
+            { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
+            { type: "animation", animation: "glob" },
+            { type: "stateChange", damage: 100 },
+            { type: "textMessage", text: "Dans la chatte a ta mere" },
+        ]
+    },
+
+    // -- Heal effects ---
     saucyStatus: {
         name: "Tomato Squeeze!",
         targetType: "friendly",
@@ -28,7 +50,7 @@ window.Actions = {
         ]
     },
 
-    // Items 
+    // --- Items --- 
 
     item_recoverStatus: {
         name: "Heating Lamp",
@@ -43,11 +65,11 @@ window.Actions = {
 
     item_recoverHp: {
         name: "Little Potion",
-        //  description: "Feeling fresh and warm",
+        description: "Feeling fresh and warm",
         targetType: "friendly",
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
-            { type: "stateChange", recover: 10, },
+            { type: "stateChange", recover: 10 },
             { type: "textMessage", text: "{CASTER} recovers HP!" },
         ]
     }

@@ -3,6 +3,7 @@ class Combatant {
         Object.keys(config).forEach(key => {
             this[key] = config[key];
         })
+        this.hp = typeof (this.hp) === 'undefined' ? this.maxHp : this.hp;
         this.battle = battle;
     }
 
@@ -16,7 +17,11 @@ class Combatant {
     }
 
     get isActive() {
-        return this.battle.activeCombatants[this.team] === this.id;
+        return this.battle?.activeCombatants[this.team] === this.id;
+    }
+
+    get givesXp() {
+        return this.level * 20;
     }
 
     createElement() {
@@ -98,7 +103,7 @@ class Combatant {
         if (this.status?.type === "saucy") {
             return [
                 { type: "textMessage", text: "Feelin saucy!" },
-                { type: "stateChange", recover: 20, onCaster: true } // <--- heal de 20 hp
+                { type: "stateChange", recover: 20, onCaster: true, expiresIn: 1 } // <--- heal de 20 hp
             ]
         }
         return [];

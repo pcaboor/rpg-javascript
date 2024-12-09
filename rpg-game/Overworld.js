@@ -68,6 +68,11 @@ class Overworld {
   }
 
   init() {
+
+    this.hud = new Hud();
+    this.hud.init(document.querySelector(".game-container"));
+
+
     this.startMap(window.OverworldMaps.DemoRoom);
 
     // Créer la minimap
@@ -89,10 +94,10 @@ class Overworld {
 
     this.startGameLoop();
 
-    this.map.startCutscene([
-      { type: "battle" }
-      // { type: "changeMap", map: "DemoRoom" }
-    ])
+    // this.map.startCutscene([
+    //   { type: "battle", enemyId: "beth" }
+    //   // { type: "changeMap", map: "DemoRoom" }
+    // ])
 
 
 
