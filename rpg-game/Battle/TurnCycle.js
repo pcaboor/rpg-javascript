@@ -19,6 +19,10 @@ class TurnCycle {
             enemy,
         })
 
+        if (submission.instanceId) {
+            this.battle.items = this.battle.items.filter(i => i.instanceId != submission.instanceId)
+        }
+
 
         const resultingEvents = caster.getReplacedEvents(submission.action.success);
 
@@ -55,10 +59,10 @@ class TurnCycle {
     }
 
     async init() {
-        await this.onNewEvent({
-            type: "textMessage",
-            text: "The battle is starting !"
-        })
+        // await this.onNewEvent({
+        //     type: "textMessage",
+        //     text: "The battle is starting !"
+        // })
 
         this.turn();
     }

@@ -12,14 +12,14 @@ window.Pizzas = {
         type: PizzaTypes.spicy,
         src: "/images/creatures/monster/monster.gif",
         icon: "/images/icons/spicy.png",
-        actions: ["clumsyStatus", "damage1"]
+        actions: ["saucyStatus", "clumsyStatus", "damage1"]
     },
     "v001": {
         name: "Call me Kale",
         type: PizzaTypes.veggie,
         src: "/images/creatures/monster/monster2.gif",
         icon: "/images/icons/veggie.png",
-        actions: ["damage1"]
+        actions: ["damage1", "saucyStatus", "clumsyStatus"]
     },
     "f001": {
         name: "Portobello Express",

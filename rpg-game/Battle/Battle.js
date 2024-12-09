@@ -4,19 +4,20 @@ class Battle {
             "player1": new Combatant({
                 ...Pizzas.s001,
                 team: "player",
-                hp: 30,
+                hp: 50,
                 maxHp: 50,
-                xp: 75,
+                xp: 0,
                 maxXp: 100,
                 level: 1,
-                status: null
+                status: null,
+                isPlayerControlled: true,
             }, this),
             "enemy1": new Combatant({
                 ...Pizzas.v001,
                 team: "enemy",
-                hp: 20,
+                hp: 50,
                 maxHp: 50,
-                xp: 20,
+                xp: 0,
                 maxXp: 100,
                 level: 1,
             }, this),
@@ -34,6 +35,13 @@ class Battle {
             player: "player1",
             enemy: "enemy1",
         }
+        // Inventory items
+        this.items = [
+            { actionId: "item_recoverStatus", instanceId: "p1", team: "player" },
+            { actionId: "item_recoverStatus", instanceId: "p2", team: "player" },
+            { actionId: "item_recoverStatus", instanceId: "p3", team: "enemy" },
+            { actionId: "item_recoverHp", instanceId: "p4", team: "player" },
+        ]
     }
 
     createElement() {
@@ -41,7 +49,7 @@ class Battle {
         this.element.classList.add("Battle");
         this.element.innerHTML = (`
       <div class="Battle_hero">
-        <img src="${'/images/characters/people/hero.png'}" alt="Hero" />
+        <img src="${'/images/characters/people/wizzard_m_run_anim_f1.png'}" alt="Hero" />
       </div>
       <div class="Battle_enemy">
         <img src=${'/images/characters/people/npc3.png'} alt="Enemy" />

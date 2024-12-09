@@ -31,7 +31,8 @@
 }
 
 .Battle_hero img {
-    transform: translateY(-64px);
+    transform: translateY(-1px);
+    transform: translateX(8px);
     /* Nudge hero spritesheet */
 }
 
