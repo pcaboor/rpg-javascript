@@ -68,6 +68,57 @@ class Combatant {
 
         // Update level
         this.hudElement.querySelector(".Combatant_level").innerText = this.level;
+
+        // Update status
+        const statuElement = this.hudElement.querySelector(".Combatant_status");
+        if (this.status) {
+            statuElement.innerText = this.status.type;
+            statuElement.style.display = "block";
+
+        } else {
+            statuElement.innerText = "";
+            statuElement.style.display = "none";
+        }
+    }
+
+    getReplacedEvents(originalEvents) {
+        if (this.status?.type === "clumsy" && utils.randomFromArray([true, false, false])) {
+            return [
+                { type: "textMessage", text: `${this.name} flop over !` },
+                // { type: "stateChange", recover: 20, onCaster: true } // <--- heal de 20 hp
+            ]
+        }
+        return originalEvents;
+
+    }
+
+    getPostsEvents() {
+
+        // SI le status et saucy alors heal de 5 hp
+        if (this.status?.type === "saucy") {
+            return [
+                { type: "textMessage", text: "Feelin saucy!" },
+                { type: "stateChange", recover: 20, onCaster: true } // <--- heal de 20 hp
+            ]
+        }
+        return [];
+    }
+
+    decrementStatus() {
+        if (this.status?.expiresIn > 0) {
+            this.status.expiresIn -= 1;
+            if (this.status.expiresIn === 0) {
+                this.update({
+                    status: null
+                })
+                return {
+                    type: "textMessage",
+                    text: "Your sauce has worn off!"
+                }
+            }
+
+        }
+        return null;
     }
 
     init(container) {

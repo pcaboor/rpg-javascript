@@ -4,8 +4,9 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-image: url(/images/maps/StreetBattle.png);
+    background-image: url(/images/maps/duel-dugeon-2.png);
     background-size: cover;
+    background-position: 0% 25%;
     image-rendering: pixelated;
 }
 
@@ -25,7 +26,7 @@
 }
 
 .Battle_hero {
-    bottom: 57px;
+    bottom: 50px;
     left: 1px;
 }
 
@@ -74,7 +75,7 @@
     }
 
     25% {
-        transform: translate3d(-155px, 20%, 0) rotate(45deg) scale(2)
+        transform: translate3d(-155px, 40px, 0) rotate(45deg) scale(2)
     }
 
     100% {
@@ -84,4 +85,70 @@
 
 .battle-spin-left {
     animation: battle-spin-left 0.8s;
+}
+
+.glob-orb {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+}
+
+@keyframes battle-glob-right {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.5);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate3d(10px, -130px, 0) scale(1);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translate3d(180px, -125px, 0) scale(3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(180px, -125px, 0) scale(3);
+        opacity: 0;
+    }
+
+
+}
+
+.battle-glob-right {
+    left: 70px;
+    top: 104px;
+    animation: battle-glob-right 1s forwards;
+}
+
+@keyframes battle-glob-left {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.5);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate3d(-10px, -50px, 0) scale(1);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translate3d(-174px, 47px, 0) scale(3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(-174px, 47px, 0) scale(3);
+        opacity: 0;
+    }
+
+
+}
+
+.battle-glob-left {
+    left: 227px;
+    top: 56px;
+    animation: battle-glob-left 1s forwards;
 }
