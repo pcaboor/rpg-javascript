@@ -19,6 +19,7 @@ class ReplacementMenu {
         this.keyboardMenu.init(container);
         this.keyboardMenu.setOptions(this.replacements.map(c => {
             return {
+                src: c.src,
                 label: c.name,
                 description: c.description,
                 handler: () => {

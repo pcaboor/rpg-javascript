@@ -3,7 +3,8 @@ window.Actions = {
     // -- Attack effects ---
 
     damage1: {
-        name: "Whomp!",
+        name: "Basic",
+        description: "+10 points de damage",
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
             { type: "animation", animation: "spin" },
@@ -13,6 +14,7 @@ window.Actions = {
 
     creamy: {
         name: "La creme de Gab",
+        description: "+30 points de damage",
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
             { type: "animation", animation: "glob" },
@@ -22,6 +24,7 @@ window.Actions = {
 
     finishHim: {
         name: "Finish him!",
+        description: "+100 points de damage",
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
             { type: "animation", animation: "glob" },
@@ -32,7 +35,7 @@ window.Actions = {
 
     // -- Heal effects ---
     saucyStatus: {
-        name: "Tomato Squeeze!",
+        name: "Tomato Squeeze",
         targetType: "friendly",
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
@@ -41,7 +44,7 @@ window.Actions = {
         ]
     },
     clumsyStatus: {
-        name: "Olive Oil!",
+        name: "Olive Oil",
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
             { type: "animation", animation: "glob", color: "#dafd2a" },

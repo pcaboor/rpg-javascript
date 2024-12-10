@@ -17,6 +17,7 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
+  font-family: "pixelate";
 }
 
 .game-container {
@@ -24,9 +25,9 @@ body {
   width: 352px;
   height: 198px;
   margin: 0 auto;
-  /* outline: 1px solid #fff; */
+  outline: 1px solid #fff;
 
-  transform: scale(3) translateY(50%);
+  transform: scale(3) translateY(60%);
 }
 
 .game-container canvas {
@@ -71,4 +72,12 @@ body {
   image-rendering: pixelated;
   /* Pour les jeux pixel art */
   transition: all 0.1s linear;
+}
+
+
+@font-face {
+  font-family: 'pixelate';
+  src: url('/fonts/Pokemon-Classic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

@@ -3,13 +3,19 @@
     left: 2px;
     top: 10px;
     image-rendering: pixelated;
+    font-size: 6px;
+
 }
 
 .Hud .Combatant {
     position: relative;
     margin-bottom: 10px;
+    font-size: 6px;
+    padding-left: 10px;
+    /* Ajuster la visibilité par élément */
 }
 
 .Hud .Combatant_type {
     display: none;
+    font-size: 6px;
 }

@@ -21,7 +21,7 @@ window.Enemies = {
         src: "/images/characters/people/npc1.png",
         monsters: {
             "a": {
-                monsterId: "f001",
+                monsterId: "s004",
                 maxHp: 50,
                 level: 1,
                 // TODO: add abilities

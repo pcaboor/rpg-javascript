@@ -28,6 +28,9 @@ class Sprite {
 
         // ---------------------
 
+        this.width = config.width || 1; // Par défaut 1 cellule
+        this.height = config.height || 1; // Par défaut 1 cellule
+
         // --- Animation configuration ---
 
         this.animations = config.animations || {
@@ -87,12 +90,14 @@ class Sprite {
 
         const [frameX, frameY] = this.frame;
 
-        this.isLoaded && ctx.drawImage(this.image,
+        this.isLoaded && ctx.drawImage(
+            this.image,
             frameX * 32, frameY * 32,
-            32, 32,
+            32 * this.width, 32 * this.height, // Taille adaptée
             x, y,
-            32, 32
-        )
+            32 * this.width, 32 * this.height // Taille affichée
+        );
+
 
         this.updateAnimationProgress();
     }

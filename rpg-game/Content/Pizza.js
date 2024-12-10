@@ -10,15 +10,15 @@ window.Pizzas = {
     "s001": {
         name: "Monster",
         type: PizzaTypes.spicy,
-        src: "/images/characters/pizzas/s001.png",
+        src: "/images/Basic-Asset-Pack/Basic-Monster-Animations/Ochre Jelly/OchreJelly.gif",
         icon: "/images/icons/spicy.png",
-        actions: ["saucyStatus", "clumsyStatus", "damage1", "finishHim", "creamy"]
+        actions: ["damage1"]
     },
     "s002": {
         name: "Monster 2",
         type: PizzaTypes.spicy,
         description: "Petite tana",
-        src: "/images/characters/pizzas/v001.png",
+        src: "/images/Basic-Asset-Pack/Basic-Monster-Animations/Blinded-Grimlock/BlindedGrimlock.gif",
         icon: "/images/icons/spicy.png",
         actions: ["saucyStatus", "clumsyStatus", "damage1", "finishHim", "creamy"]
     },
@@ -26,7 +26,7 @@ window.Pizzas = {
         name: "Monster 3",
         type: PizzaTypes.spicy,
         description: "Petite tana",
-        src: "/images/characters/pizzas/f003.png",
+        src: "/images/Basic-Asset-Pack/Basic-Monster-Animations/Brawny Ogre/BrawnyOgre.gif",
         icon: "/images/icons/spicy.png",
         actions: ["saucyStatus", "clumsyStatus", "damage1", "finishHim", "creamy"]
     },
@@ -34,7 +34,7 @@ window.Pizzas = {
         name: "Monster 4",
         type: PizzaTypes.spicy,
         description: "Petite tana",
-        src: "/images/characters/pizzas/c001.png",
+        src: "/images/Basic-Asset-Pack/Basic-Monster-Animations/Crimson Slaad/CrimsonSlaad.gif",
         icon: "/images/icons/spicy.png",
         actions: ["saucyStatus", "clumsyStatus", "damage1", "finishHim", "creamy"]
     },

@@ -67,12 +67,13 @@ class Combatant {
         this.hudElement.setAttribute("data-active", this.isActive);
         this.pizzaElement.setAttribute("data-active", this.isActive);
 
+
         // Update life and xp
         this.hpFills.forEach(rect => rect.style.width = `${this.hpPercent}%`)
         this.xpFills.forEach(rect => rect.style.width = `${this.xpPercent}%`)
 
         // Update level
-        this.hudElement.querySelector(".Combatant_level").innerText = this.level;
+        this.hudElement.querySelector(".Combatant_level").innerText = "lv" + this.level;
 
         // Update status
         const statuElement = this.hudElement.querySelector(".Combatant_status");

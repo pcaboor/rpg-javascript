@@ -4,7 +4,8 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-image: url(/images/maps/duel-dugeon-2.png);
+    background: white;
+    background-image: url();
     background-size: cover;
     background-position: 0% 25%;
     image-rendering: pixelated;
@@ -26,8 +27,8 @@
 }
 
 .Battle_hero {
-    bottom: 50px;
-    left: 1px;
+    bottom: 60px;
+    left: 10px;
 }
 
 .Battle_hero img {
@@ -37,8 +38,8 @@
 }
 
 .Battle_enemy {
-    top: 42px;
-    right: -1px;
+    top: 60px;
+    right: 20px;
 }
 
 /* Animations */

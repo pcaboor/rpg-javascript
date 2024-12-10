@@ -1,7 +1,7 @@
 .Combatant {
     width: 67px;
     height: 14px;
-    background: url("/images/ui/combatant-plate.png") no-repeat no-repeat;
+    background: url("/images/ui/combatant-plateV3.png") no-repeat no-repeat;
     position: absolute;
 }
 
@@ -35,13 +35,13 @@
     width: 22px;
     height: 12px;
     overflow: hidden;
+
 }
 
 .Combatant_character {
     display: block;
     position: absolute;
-    left: -11px;
-    bottom: -7px;
+    bottom: 0.5px;
 }
 
 .Battle .Combatant_character_crop {
@@ -53,11 +53,12 @@
     left: -2px;
     top: -8px;
     white-space: nowrap;
-    background: var(--menu-font-color);
-    color: #fff;
-    font-size: 5px;
+    background: white;
+    color: black;
+    font-size: 4px;
     /*This is only so small because the component is scaled 2x in battle which is weird */
     padding-left: 2px;
+
     padding-right: 2px;
     margin: 0;
 }
@@ -92,7 +93,7 @@
 
 .Combatant_level {
     position: absolute;
-    font-size: 12px;
+    font-size: 6px;
     right: 2px;
     top: -1px;
     width: 17px;
@@ -100,8 +101,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #F8C594;
-    border: 1px solid #A48465;
+    background: #ffffff;
+    border: 1px solid #000000;
     margin: 0;
 }
 
@@ -128,20 +129,27 @@
 .Pizza {
     position: absolute;
     transform: scale(2);
+
     transition: opacity 0.4s, transform 0.4s;
-    background: url(/images/characters/pizzas/pizza-shadow.png) no-repeat no-repeat;
+    /* background: url(/images/characters/pizzas/pizza-shadow.png) no-repeat no-repeat; */
 }
 
 .Pizza[data-team="player"] {
     bottom: 73px;
-    left: 51px;
+    left: 65px;
+    width: 30px;
+    height: 30px;
+
 }
 
 .Pizza[data-team="enemy"] {
     top: 70px;
     right: 100px;
+    width: 30px;
+    height: 30px;
 
 }
+
 
 .Pizza[data-active="false"] {
     opacity: 0;

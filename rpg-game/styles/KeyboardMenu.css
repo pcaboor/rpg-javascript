@@ -1,6 +1,7 @@
 .KeyboardMenu {
-    border: 1px solid var(--border-color);
-    background: var(--menu-background);
+    background: black;
+    border: 1px solid white;
+    color: white;
     position: absolute;
 }
 
@@ -12,22 +13,24 @@
     -webkit-appearance: none;
     border: 0;
     background: none;
+    color: white;
     height: 20px;
     cursor: pointer;
     font-family: inherit;
     padding: 0;
     padding-left: 1em;
-    font-size: 10px;
+    font-size: 8px;
 }
 
 .KeyboardMenu button:focus {
-    background: var(--menu-selected-background);
+    background: none;
+    border: 1px solid white;
     outline: 0;
 }
 
 .KeyboardMenu .option {
     position: relative;
-    font-size: 10px;
+    font-size: 8px;
     display: flex;
     align-items: center;
     padding-right: 3px;
@@ -39,7 +42,7 @@
     top: 0;
     bottom: 0;
 
-    font-size: 10px;
+    font-size: 8px;
 
 }
 
@@ -48,14 +51,14 @@
     bottom: 0;
     left: 0;
     right: 0;
-    color: var(--menu-font-color);
-    border-top: 1px solid var(--border-color);
-    background: var(--menu-background);
+    background: black;
+    border: 1px solid white;
+    color: white;
     padding: 2px;
 }
 
 .DescriptionBox p {
-    font-size: 10px;
+    font-size: 6px;
     margin: 0;
 }
 

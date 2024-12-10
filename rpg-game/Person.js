@@ -6,6 +6,7 @@ class Person extends GameObject {
 
     this.isPlayerControlled = config.isPlayerControlled || false;
 
+
     this.directionUpdate = {
       "up": ["y", -1],
       "down": ["y", 1],
@@ -37,7 +38,7 @@ class Person extends GameObject {
   startBehavior(state, behavior) {
     //Set character direction to whatever behavior has
     this.direction = behavior.direction;
-    
+
     if (behavior.type === "walk") {
       //Stop here if space is not free
       if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
@@ -68,25 +69,25 @@ class Person extends GameObject {
   }
 
   updatePosition() {
-      const [property, change] = this.directionUpdate[this.direction];
-      this[property] += change;
-      this.movingProgressRemaining -= 1;
+    const [property, change] = this.directionUpdate[this.direction];
+    this[property] += change;
+    this.movingProgressRemaining -= 1;
 
-      if (this.movingProgressRemaining === 0) {
-        //We finished the walk!
-        utils.emitEvent("PersonWalkingComplete", {
-          whoId: this.id
-        })
+    if (this.movingProgressRemaining === 0) {
+      //We finished the walk!
+      utils.emitEvent("PersonWalkingComplete", {
+        whoId: this.id
+      })
 
-      }
+    }
   }
 
   updateSprite() {
     if (this.movingProgressRemaining > 0) {
-      this.sprite.setAnimation("walk-"+this.direction);
+      this.sprite.setAnimation("walk-" + this.direction);
       return;
     }
-    this.sprite.setAnimation("idle-"+this.direction);    
+    this.sprite.setAnimation("idle-" + this.direction);
   }
 
 }

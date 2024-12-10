@@ -106,12 +106,9 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(5),
         y: utils.withGrid(6),
+
       }),
-      propsGate: new Person({
-        x: utils.withGrid(1),
-        y: utils.withGrid(7),
-        src: "/images/props/gate.png",
-      }),
+
       propsGate2: new Person({
         x: utils.withGrid(2),
         y: utils.withGrid(9),

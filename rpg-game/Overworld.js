@@ -94,10 +94,10 @@ class Overworld {
 
     this.startGameLoop();
 
-    // this.map.startCutscene([
-    //   { type: "battle", enemyId: "beth" }
-    //   // { type: "changeMap", map: "DemoRoom" }
-    // ])
+    this.map.startCutscene([
+      { type: "battle", enemyId: "beth" }
+      // { type: "changeMap", map: "DemoRoom" }
+    ])
 
 
 
